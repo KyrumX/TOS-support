@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Town of Salem support app",
+  "description": "This extension allows users to keep track of taken roles and player role claims.",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "support.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}

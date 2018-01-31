@@ -1,0 +1,52 @@
+body {
+  min-width:300px;
+  margin: 10px;
+  white-space: nowrap;
+}
+
+#tablediv {
+  width: 100%;
+}
+
+#ranked {
+  width: 100%;
+  align-self: left;
+  border-collapse: collapse;
+}
+
+#ranked tr {
+  width: 100%;
+}
+
+#ranked th, td{
+  color: black;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+#ranked th {
+    background-color: darkgray;
+}
+
+#ranked tr th:nth-child(1){
+       width: 15%;
+}
+
+#ranked tr:nth-child(even) {
+    background-color: white;
+}
+
+#ranked tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.orange  {
+  color: orange;
+}
+
+.ranked-input {
+  border: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: inherit;
+}
