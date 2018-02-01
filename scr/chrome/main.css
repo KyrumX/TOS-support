@@ -1,7 +1,11 @@
 body {
-  min-width:300px;
+  min-width:500px;
   margin: 10px;
   white-space: nowrap;
+}
+
+input {
+  color: white;
 }
 
 #tablediv {
@@ -9,6 +13,7 @@ body {
 }
 
 #ranked {
+  font-size: 18px;
   width: 100%;
   align-self: left;
   border-collapse: collapse;
@@ -16,10 +21,11 @@ body {
 
 #ranked tr {
   width: 100%;
+  color: white;
 }
 
 #ranked th, td{
-  color: black;
+  color: white;
   text-align: center;
   border: 1px solid gray;
 }
@@ -32,12 +38,20 @@ body {
        width: 15%;
 }
 
+#ranked tr th:nth-child(2){
+       width: 40%;
+}
+
 #ranked tr:nth-child(even) {
-    background-color: white;
+    background-color: #766829;
 }
 
 #ranked tr:nth-child(odd) {
-    background-color: lightgray;
+    background-color: #5F461A;
+}
+
+#ranked input {
+  font-size: 18px;
 }
 
 .orange  {
@@ -49,4 +63,21 @@ body {
   width: 100%;
   text-align: center;
   background-color: inherit;
+}
+
+.resetdiv {
+  border-top: 2px solid;
+  padding: 4px;
+}
+
+.roleselect {
+  background-color: inherit;
+  color: inherit;
+  width: 100%;
+  font-size: inherit;
+  text-align: center;
+}
+
+.roleselect option {
+  background-color: black;
 }

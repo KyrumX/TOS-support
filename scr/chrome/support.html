@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Town of Salem support</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style type="text/css">
+
+      h1 {
+        font-size: 15px;
+      }
+
+      #container {
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+    <script src="ranked.js"></script>
+  </head>
+
+  <body>
+    <h1 class="orange">Town of Salem</h1>
+    <div id="container">
+      <div id="tablediv">
+        <table id="ranked">
+          <tr>
+              <th>
+                Role type
+              </th>
+              <th>
+                Role
+              </th>
+              <th>
+                Player
+              </th>
+            </tr>
+            <tr>
+              <td id="tdr-1">
+                Jailor
+              </td>
+              <td>
+                Jailor
+              </td>
+              <td>
+                <input type="text" id="name1" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-2">
+                TI
+              </td>
+              <td>
+                <select id="town-invest" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="invest">Investigator</option>
+                  <option value="lo">Lookout</option>
+                  <option value="sherrif">Sheriff</option>
+                  <option value="spy">Spy</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name2" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-3">
+                TI
+              </td>
+              <td>
+                <select id="town-invest2" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="invest">Investigator</option>
+                  <option value="lo">Lookout</option>
+                  <option value="sherrif">Sheriff</option>
+                  <option value="spy">Spy</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name3" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-4">
+                TP
+              </td>
+              <td>
+                <select id="town-protective" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="bg">Bodyguard</option>
+                  <option value="doc">Doctor</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name4" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-5">
+                TK
+              </td>
+              <td>
+                <select id="town-killing" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name5" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-6">
+                TS
+              </td>
+              <td>
+                <select id="town-support" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="escort">Escort</option>
+                  <option value="mayor">Mayor</option>
+                  <option value="med">Medium</option>
+                  <option value="retri">Retributionist</option>
+                  <option value="tper">Transporter</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name6" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-7">
+                TR
+              </td>
+              <td>
+                <select id="town-random" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="invest">Investigator</option>
+                  <option value="lo">Lookout</option>
+                  <option value="sherrif">Sheriff</option>
+                  <option value="spy">Spy</option>
+                  <option value="bg">Bodyguard</option>
+                  <option value="doc">Doctor</option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
+                  <option value="escort">Escort</option>
+                  <option value="mayor">Mayor</option>
+                  <option value="med">Medium</option>
+                  <option value="retri">Retributionist</option>
+                  <option value="tper">Transporter</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name7" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-8">
+                TR
+              </td>
+              <td>
+                <select id="town-random2" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="invest">Investigator</option>
+                  <option value="lo">Lookout</option>
+                  <option value="sherrif">Sheriff</option>
+                  <option value="spy">Spy</option>
+                  <option value="bg">Bodyguard</option>
+                  <option value="doc">Doctor</option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
+                  <option value="escort">Escort</option>
+                  <option value="mayor">Mayor</option>
+                  <option value="med">Medium</option>
+                  <option value="retri">Retributionist</option>
+                  <option value="tper">Transporter</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name8" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-9">
+                TR
+              </td>
+              <td>
+                <select id="town-random3" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="invest">Investigator</option>
+                  <option value="lo">Lookout</option>
+                  <option value="sherrif">Sheriff</option>
+                  <option value="spy">Spy</option>
+                  <option value="bg">Bodyguard</option>
+                  <option value="doc">Doctor</option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
+                  <option value="escort">Escort</option>
+                  <option value="mayor">Mayor</option>
+                  <option value="med">Medium</option>
+                  <option value="retri">Retributionist</option>
+                  <option value="tper">Transporter</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name9" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-10">
+                GF
+              </td>
+              <td>
+                Godfather
+              </td>
+              <td>
+                <input type="text" id="name10" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-11">
+                MAF
+              </td>
+              <td>
+                Mafioso
+              </td>
+              <td>
+                <input type="text" id="name11" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-12">
+                RM
+              </td>
+              <td>
+                <select id="maf-random" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="bmer">Blackmailer</option>
+                  <option value="consig">Consigliere</option>
+                  <option value="consort">Consort</option>
+                  <option value="dis">Disguiser</option>
+                  <option value="forger">Forger</option>
+                  <option value="jan">Janitor</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name12" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-13">
+                RM
+              </td>
+              <td>
+                <select id="maf-random2" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="bmer">Blackmailer</option>
+                  <option value="consig">Consigliere</option>
+                  <option value="consort">Consort</option>
+                  <option value="dis">Disguiser</option>
+                  <option value="forger">Forger</option>
+                  <option value="jan">Janitor</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name13" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-14">
+                NE
+              </td>
+              <td>
+                <select id="neutral-evil" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="exe">Executioner</option>
+                  <option value="jest">Jester</option>
+                  <option value="witch">Witch</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name14" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-15">
+                NK
+              </td>
+              <td>
+                <select id="neutral-killing" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="arso">Arsonist</option>
+                  <option value="sk">Serial Killer</option>
+                  <option value="ww">Werewolf</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name15" class="ranked-input">
+              </td>
+            </tr>
+        </table>
+      </div>
+      <br/>
+      <div>
+        <label for="mk1">
+          Default
+          <input type="radio" id="mk1" name="markupset" value="Default" checked/>
+        </label>
+        <label for="mk2">
+          Allies
+          <input type="radio" id="mk2" name="markupset" value="Allies" />
+        </label>
+      </div>
+      <div class='resetdiv'>
+        <button type="button" id="resetbutton">Reset</button>
+      </div>
+    </div>
+  </body>
+</html>
