@@ -1,3 +1,9 @@
+/*
+
+  Copyright (C) Aaron Beetstra 2018
+
+*/
+
 /* Function that takes care of Unique roles in RANKED mode */
 
 function UniqueRolesCheck() {

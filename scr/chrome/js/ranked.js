@@ -61,12 +61,10 @@ var unique = [
   "vet"
 ]
 
-function saveData(key, value) {
+function saveData(key, value, callback) {
   var temp = {};
   temp[key] = value;
-  chrome.storage.sync.set(temp, function() {
-    console.log('Settings saved');
-  });
+  chrome.storage.sync.set(temp, callback);
 }
 
 function setElementValue(id, value) {
@@ -123,6 +121,9 @@ function setNameInputActions() {
   document.getElementById('name15').addEventListener('change', () => {
     saveData("p15", document.getElementById("name15").value);
   });
+  document.getElementById('playername').addEventListener('change', () => {
+    saveData("playername", document.getElementById("playername").value);
+  });
 }
 
 function setRoleInputActions() {
@@ -167,15 +168,35 @@ function setRoleInputActions() {
   document.getElementById('neutral-killing').addEventListener('change', () => {
     saveData("neutral-killing", document.getElementById('neutral-killing').value);
   });
+  document.getElementById('playerrole').addEventListener('change', () => {
+    saveData("playerrole", document.getElementById('playerrole').value, () => {
+      colorSchemeSetup();
+    });
+  });
 }
 
 function colorSchemeSetup() {
-  if(document.getElementById('mk2').checked) {
-    console.log('Hello world! non default!');
-  }
-  else {
-    setDefaultColors();
-  }
+  getSavedDate(['colorscheme'], function(object) {
+    if (object['colorscheme'] == undefined)
+      saveData('colorscheme', 'default', function() {
+        rankedDefaultColors();
+        document.getElementById("mk1").checked = true;
+      });
+    else if (object['colorscheme'] == 'default') {
+      rankedDefaultColors();
+      document.getElementById("mk1").checked = true;
+    }
+    else if (object['colorscheme'] == 'allies') {
+      if(document.getElementById('playerrole').value != 'unkown') {
+        rankedAlliedColors(document.getElementById('playerrole').value);
+        document.getElementById("mk2").checked = true;
+      }
+      else {
+        alert("Please select your own role first!");
+        document.getElementById("mk1").checked = true;
+      }
+    }
+  });
 }
 
 function playerNamesSetup() {
@@ -185,6 +206,11 @@ function playerNamesSetup() {
         document.getElementById(names[i]).value = object[players[i]];
       }
     }
+    getSavedDate(['playername'], function(object) {
+      if (object['playername'] != undefined) {
+        document.getElementById('playername').value = object['playername'];
+      }
+    });
   });
 }
 
@@ -195,8 +221,14 @@ function playerRolesSetup() {
         document.getElementById(roles[i]).value = object[roles[i]];
       }
     }
+    getSavedDate(['playerrole'], function(object) {
+      if (object['playerrole'] != undefined) {
+        document.getElementById('playerrole').value = object['playerrole'];
+      }
+    });
     /* execute unique thingy here */
     removeUniqueRoles();
+    colorSchemeSetup();
   });
 }
 
@@ -209,37 +241,71 @@ function reset() {
   for (var i = 0; i < 15; i++) {
     document.getElementById(names[i]).value = "";
   }
-  for (var i = 0; i < 1125; i++) {
+  for (var i = 0; i < roles.length; i++) {
     document.getElementById(roles[i]).value = "unkown";
+  }
+  document.getElementById('playername').value = "";
+  document.getElementById('playerrole').value = "unkown";
+  document.getElementById("mk1").checked = true;
+  rankedDefaultColors();
+  UniqueRolesCheck();
+}
+
+function setAllyColorScheme(role) {
+  if (role == 'jailor' || role == 'invest' || role == 'lo' || role == 'lo' || role == 'sherrif' || role == 'spy' || role == 'bg' || role == 'doc' || role == 'vet' || role == 'vigil' || role == 'escort' || role == 'mayor' || role == 'med' || role == 'retri' || role == 'tper') {
+    document.getElementById("tdr-1").style.color = "#00FF00";
+    document.getElementById("tdr-2").style.color = "#00FF00";
+    document.getElementById("tdr-3").style.color = "#00FF00";
+    document.getElementById("tdr-4").style.color = "#00FF00";
+    document.getElementById("tdr-5").style.color = "#00FF00";
+    document.getElementById("tdr-6").style.color = "#00FF00";
+    document.getElementById("tdr-7").style.color = "#00FF00";
+    document.getElementById("tdr-8").style.color = "#00FF00";
+    document.getElementById("tdr-9").style.color = "#00FF00";
+    document.getElementById("tdr-10").style.color = "#FF0000";
+    document.getElementById("tdr-11").style.color = "#FF0000";
+    document.getElementById("tdr-12").style.color = "#FF0000";
+    document.getElementById("tdr-13").style.color = "#FF0000";
+    document.getElementById("tdr-14").style.color = "#ACACBD";
+    document.getElementById("tdr-15").style.color = "#FF0000";
+  }
+  else if (role == 'gf' || role == 'maf' || role == 'bmer' || role == 'consig' || role == 'consort' || role == 'dis' || role == 'forger' || role == 'framer') {
+    document.getElementById("tdr-1").style.color = "#FF0000";
+    document.getElementById("tdr-2").style.color = "#FF0000";
+    document.getElementById("tdr-3").style.color = "#FF0000";
+    document.getElementById("tdr-4").style.color = "#FF0000";
+    document.getElementById("tdr-5").style.color = "#FF0000";
+    document.getElementById("tdr-6").style.color = "#FF0000";
+    document.getElementById("tdr-7").style.color = "#FF0000";
+    document.getElementById("tdr-8").style.color = "#FF0000";
+    document.getElementById("tdr-9").style.color = "#FF0000";
+    document.getElementById("tdr-10").style.color = "#00FF00";
+    document.getElementById("tdr-11").style.color = "#00FF00";
+    document.getElementById("tdr-12").style.color = "#00FF00";
+    document.getElementById("tdr-13").style.color = "#00FF00";
+    document.getElementById("tdr-14").style.color = "#00FF00";
+    document.getElementById("tdr-15").style.color = "#FF0000";
   }
 }
 
-function setDefaultColors() {
-  document.getElementById("tdr-1").style.color = "#00FF00";
-  document.getElementById("tdr-2").style.color = "#00FF00";
-  document.getElementById("tdr-3").style.color = "#00FF00";
-  document.getElementById("tdr-4").style.color = "#00FF00";
-  document.getElementById("tdr-5").style.color = "#00FF00";
-  document.getElementById("tdr-6").style.color = "#00FF00";
-  document.getElementById("tdr-7").style.color = "#00FF00";
-  document.getElementById("tdr-8").style.color = "#00FF00";
-  document.getElementById("tdr-9").style.color = "#00FF00";
-  document.getElementById("tdr-10").style.color = "#FF0000";
-  document.getElementById("tdr-11").style.color = "#FF0000";
-  document.getElementById("tdr-12").style.color = "#FF0000";
-  document.getElementById("tdr-13").style.color = "#FF0000";
-  document.getElementById("tdr-14").style.color = "#ACACBD";
-  document.getElementById("tdr-15").style.color = "#ACACBD";
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  colorSchemeSetup();
-
   playerNamesSetup();
   playerRolesSetup();
 
   setNameInputActions();
   setRoleInputActions();
+
+  document.getElementById('mk1').addEventListener('change', () => {
+    saveData('colorscheme', 'default', function() {
+      colorSchemeSetup();
+    });
+  });
+  document.getElementById('mk2').addEventListener('change', () => {
+    saveData('colorscheme', 'allies', function() {
+      colorSchemeSetup();
+    });
+  });
+
 
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
