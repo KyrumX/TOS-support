@@ -137,18 +137,23 @@ function setRoleInputActions() {
   });
   document.getElementById('town-killing').addEventListener('change', () => {
     saveData("town-killing", document.getElementById('town-killing').value);
+    removeUniqueRoles();
   });
   document.getElementById('town-support').addEventListener('change', () => {
     saveData("town-support", document.getElementById('town-support').value);
+    removeUniqueRoles();
   });
   document.getElementById('town-random').addEventListener('change', () => {
     saveData("town-random", document.getElementById('town-random').value);
+    removeUniqueRoles();
   });
   document.getElementById('town-random2').addEventListener('change', () => {
     saveData("town-random2", document.getElementById('town-random2').value);
+    removeUniqueRoles();
   });
   document.getElementById('town-random3').addEventListener('change', () => {
     saveData("town-random3", document.getElementById('town-random3').value);
+    removeUniqueRoles();
   });
   document.getElementById('maf-random').addEventListener('change', () => {
     saveData("maf-random", document.getElementById('maf-random').value);
@@ -197,25 +202,7 @@ function playerRolesSetup() {
 
 /* This function removes unique roles as option when they are already picked in another slot */
 function removeUniqueRoles() {
-  console.log(document.getElementById('neutral-killing').value);
-
-  if (document.getElementById('town-killing').value == "vet") {
-    var selectobject=document.getElementById("town-random")
-    for (var i=0; i<selectobject.length; i++){
-      if (selectobject.options[i].value == 'vet' )
-         selectobject.remove(i);
-    }
-    selectobject=document.getElementById("town-random2")
-    for (var i=0; i<selectobject.length; i++){
-      if (selectobject.options[i].value == 'vet' )
-         selectobject.remove(i);
-    }
-    selectobject=document.getElementById("town-random3")
-    for (var i=0; i<selectobject.length; i++){
-      if (selectobject.options[i].value == 'vet' )
-         selectobject.remove(i);
-    }
-  }
+  UniqueRolesCheck();
 }
 
 function reset() {
