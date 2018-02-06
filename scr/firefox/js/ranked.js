@@ -64,7 +64,7 @@ var unique = [
 function saveData(key, value, callback) {
   var temp = {};
   temp[key] = value;
-  chrome.storage.sync.set(temp, callback);
+  browser.storage.local.set(temp, callback);
 }
 
 function setElementValue(id, value) {
@@ -72,7 +72,7 @@ function setElementValue(id, value) {
 }
 
 function getSavedDate(key, callback) {
-  chrome.storage.sync.get(key, callback);
+  browser.storage.local.get(key, callback);
 }
 
 function setNameInputActions() {
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
-    chrome.storage.sync.clear(function() {
+    browser.storage.local.clear(function() {
       reset();
     });
   });
