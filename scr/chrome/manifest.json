@@ -3,13 +3,13 @@
 
   "name": "Town of Salem - Support Tool",
   "description": "This extension allows users to keep track of taken roles and player role claims.",
-  "version": "0.1",
+  "version": "0.2",
   "icons": { "16": "images/16icon.png",
               "48": "images/48icon.png",
               "128": "images/128icon.png" },
 
   "browser_action": {
-    "default_popup": "html/support.html"
+    "default_popup": "html/main.html"
   },
   "short_name": "TOS Support",
   "author": "Aaron Beetstra",

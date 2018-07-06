@@ -4,6 +4,16 @@
 
 */
 
+function getCurrentPage(key, callback) {
+    chrome.storage.local.get(key, callback);
+}
+
+function setCurrentPage(key, value, callback) {
+    var temp = {};
+    temp[key] = value;
+    chrome.storage.local.set(temp, callback);
+}
+
 var players = [
   "p1",
   "p2",
@@ -274,6 +284,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('resetbutton').addEventListener('click', () => {
     chrome.storage.sync.clear(function() {
       reset();
+    });
+  });
+
+  document.getElementById('return_mm').addEventListener('click', () => {
+    setCurrentPage("last_page", "main.html", function() {
+      document.location.href = "../html/main.html";
     });
   });
 });

@@ -1,118 +1,21 @@
 body {
-  min-width:500px;
+  width: 100px;
   margin: 15px;
-  white-space: nowrap;
-  background-color: indianred;
+  background-color: white;
+  border-radius: 1px;
+  border-color: gray;
 }
 
-input {
-  color: white;
-}
-
-#title {
-  text-align: center;
-  max-height: 20px;
-}
-
-.tost {
-  font-family: fantasy;
-  font-size: 20px;
-}
-
-#tablediv {
-  width: 100%;
-}
-
-#ranked {
-  font-size: 18px;
-  width: 100%;
-  align-self: left;
-  border-collapse: collapse;
-}
-
-#ranked tr {
-  width: 100%;
-  color: white;
-}
-
-#ranked th, td{
-  color: white;
-  text-align: center;
-  border: 1px solid gray;
-}
-
-#ranked th {
-    background-color: darkgray;
-}
-
-#ranked tr th:nth-child(1){
-       width: 15%;
-}
-
-#ranked tr th:nth-child(2){
-       width: 40%;
-}
-
-#ranked tr:nth-child(even) {
-    background-color: #766829;
-}
-
-#ranked tr:nth-child(odd) {
-    background-color: #5F461A;
-}
-
-#ranked input {
-  font-size: 18px;
-}
-
-.orange  {
-  color: orange;
-}
-
-.ranked-input {
-  border: 0px;
-  width: 100%;
-  text-align: center;
-  background-color: inherit;
-}
-
-.resetdiv {
-  border-top: 2px solid;
-  padding: 4px;
-}
-
-.roleselect {
-  background-color: inherit;
-  color: inherit;
-  width: 100%;
-  font-size: inherit;
+#title_main {
   text-align: center;
 }
 
-.roleselect option {
-  background-color: black;
+#title_main h1 {
+  color: red;
+  font-size: 19px;
 }
 
-#userinputdiv {
-  color: black;
-  font-size: 16px;
-  padding: 5px;
-}
-
-#userinputdiv label {
-  font-size: inherit;
-}
-
-.playerroleselect {
-  font-size: inherit;
-}
-
-.nameinput {
-  font-size: inherit;
-  color: black;
-}
-
-#colorschemediv {
-  background-color: black;
-  color: white;
+.gm_button {
+  width: 100%;
+  border-radius: 15px;
 }
