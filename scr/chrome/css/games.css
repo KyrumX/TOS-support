@@ -2,7 +2,14 @@ body {
   min-width:500px;
   margin: 15px;
   white-space: nowrap;
+}
+
+#body_ranked {
   background-color: indianred;
+}
+
+#body_c_ranked {
+  background-color: #af47d8;
 }
 
 input {

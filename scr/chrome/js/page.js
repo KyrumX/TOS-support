@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Switch to Ranked Coven on request
   document.getElementById('rk_coven_button').addEventListener('click', () => {
-    document.location.href = "../html/ranked_coven.html";
+    setCurrentPage("last_page", "ranked_coven.html", function() {
+      document.location.href = "../html/ranked_coven.html";
+    });
   });
 });

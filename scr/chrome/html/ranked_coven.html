@@ -11,12 +11,12 @@
     </style>
     <script src="../js/colorschemes.js"></script>
     <script src="../js/roles.js"></script>
-    <script src="../js/ranked.js"></script>
+    <script src="../js/r_coven.js"></script>
   </head>
 
-  <body id="body_ranked">
+  <body id="body_c_ranked">
     <div id="title">
-    <h1 class="tost">Town of Salem - Ranked</h1>
+    <h1 class="tost">Town of Salem - Coven Ranked</h1>
     </div>
     <div id="container">
       <div id="userinputdiv">
@@ -42,21 +42,24 @@
             <option value="med">Medium</option>
             <option value="retri">Retributionist</option>
             <option value="tper">Transporter</option>
-            <option value="gf">Godfather</option>
-            <option value="maf">Mafioso</option>
-            <option value="bmer">Blackmailer</option>
+            <option value="psy">Psychic</option>
+            <option value="track">Tracker</option>
+            <option value="crus">Crusader</option>
             <option value="consig">Consigliere</option>
-            <option value="consort">Consort</option>
-            <option value="dis">Disguiser</option>
-            <option value="forger">Forger</option>
-            <option value="jan">Janitor</option>
-            <option value="framer">Framer</option>
+            <option value="trapper">Trapper</option>
+            <option value="cl">Coven Leader</option>
+            <option value="medusa">Medusa</option>
+            <option value="hm">Hex Master</option>
+            <option value="necro">Necromancer</option>
             <option value="exe">Executioner</option>
-            <option value="jest">Jester</option>
-            <option value="witch">Witch</option>
+            <option value="pois">Poisoner</option>
+            <option value="pmer">Potion Master</option>
             <option value="arso">Arsonist</option>
             <option value="sk">Serial Killer</option>
             <option value="ww">Werewolf</option>
+            <option value="jugg">Juggernaut</option>
+            <option value="exe">Executioner</option>
+            <option value="jest">Jester</option>
           </select>
         </label>
       </div>
@@ -95,6 +98,8 @@
                   <option value="lo">Lookout</option>
                   <option value="sherrif">Sheriff</option>
                   <option value="spy">Spy</option>
+                  <option value="psy">Psychic</option>
+                  <option value="track">Tracker</option>
                 </select>
               </td>
               <td>
@@ -112,6 +117,8 @@
                   <option value="lo">Lookout</option>
                   <option value="sherrif">Sheriff</option>
                   <option value="spy">Spy</option>
+                  <option value="psy">Psychic</option>
+                  <option value="track">Tracker</option>
                 </select>
               </td>
               <td>
@@ -120,36 +127,6 @@
             </tr>
             <tr>
               <td id="tdr-4">
-                TP
-              </td>
-              <td>
-                <select id="town-protective" class="roleselect">
-                  <option value="unkown"></option>
-                  <option value="bg">Bodyguard</option>
-                  <option value="doc">Doctor</option>
-                </select>
-              </td>
-              <td>
-                <input type="text" id="name4" class="ranked-input">
-              </td>
-            </tr>
-            <tr>
-              <td id="tdr-5">
-                TK
-              </td>
-              <td>
-                <select id="town-killing" class="roleselect">
-                  <option value="unkown"></option>
-                  <option value="vet">Veteran</option>
-                  <option value="vigil">Vigilante</option>
-                </select>
-              </td>
-              <td>
-                <input type="text" id="name5" class="ranked-input">
-              </td>
-            </tr>
-            <tr>
-              <td id="tdr-6">
                 TS
               </td>
               <td>
@@ -160,6 +137,38 @@
                   <option value="med">Medium</option>
                   <option value="retri">Retributionist</option>
                   <option value="tper">Transporter</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name4" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-5">
+                TP
+              </td>
+              <td>
+                <select id="town-protective" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="bg">Bodyguard</option>
+                  <option value="doc">Doctor</option>
+                  <option value="crus">Crusader</option>
+                  <option value="trapper">Trapper</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name5" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-6">
+                TK
+              </td>
+              <td>
+                <select id="town-killing" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
                 </select>
               </td>
               <td>
@@ -186,6 +195,10 @@
                   <option value="med">Medium</option>
                   <option value="retri">Retributionist</option>
                   <option value="tper">Transporter</option>
+                  <option value="crus">Crusader</option>
+                  <option value="trapper">Trapper</option>
+                  <option value="psy">Psychic</option>
+                  <option value="track">Tracker</option>
                 </select>
               </td>
               <td>
@@ -212,6 +225,10 @@
                   <option value="med">Medium</option>
                   <option value="retri">Retributionist</option>
                   <option value="tper">Transporter</option>
+                  <option value="crus">Crusader</option>
+                  <option value="trapper">Trapper</option>
+                  <option value="psy">Psychic</option>
+                  <option value="track">Tracker</option>
                 </select>
               </td>
               <td>
@@ -238,6 +255,10 @@
                   <option value="med">Medium</option>
                   <option value="retri">Retributionist</option>
                   <option value="tper">Transporter</option>
+                  <option value="crus">Crusader</option>
+                  <option value="trapper">Trapper</option>
+                  <option value="psy">Psychic</option>
+                  <option value="track">Tracker</option>
                 </select>
               </td>
               <td>
@@ -246,10 +267,10 @@
             </tr>
             <tr>
               <td id="tdr-10">
-                GF
+                CL
               </td>
               <td>
-                Godfather
+                Coven Leader
               </td>
               <td>
                 <input type="text" id="name10" class="ranked-input">
@@ -257,10 +278,10 @@
             </tr>
             <tr>
               <td id="tdr-11">
-                MAF
+                Medu
               </td>
               <td>
-                Mafioso
+                Medusa
               </td>
               <td>
                 <input type="text" id="name11" class="ranked-input">
@@ -268,18 +289,16 @@
             </tr>
             <tr>
               <td id="tdr-12">
-                RM
+                RC
               </td>
               <td>
-                <select id="maf-random" class="roleselect">
+                <select id="coven-random" class="roleselect">
                   <option value="unkown"></option>
-                  <option value="bmer">Blackmailer</option>
-                  <option value="consig">Consigliere</option>
-                  <option value="consort">Consort</option>
-                  <option value="dis">Disguiser</option>
-                  <option value="forger">Forger</option>
-                  <option value="jan">Janitor</option>
-                  <option value="framer">Framer</option>
+                  <option value="hm">Hex Master</option>
+                  <option value="necro">Necromancer</option>
+                  <option value="exe">Executioner</option>
+                  <option value="pois">Poisoner</option>
+                  <option value="pmer">Potion Master</option>
                 </select>
               </td>
               <td>
@@ -288,18 +307,16 @@
             </tr>
             <tr>
               <td id="tdr-13">
-                RM
+                RC
               </td>
               <td>
-                <select id="maf-random2" class="roleselect">
+                <select id="coven-random2" class="roleselect">
                   <option value="unkown"></option>
-                  <option value="bmer">Blackmailer</option>
-                  <option value="consig">Consigliere</option>
-                  <option value="consort">Consort</option>
-                  <option value="dis">Disguiser</option>
-                  <option value="forger">Forger</option>
-                  <option value="jan">Janitor</option>
-                  <option value="framer">Framer</option>
+                  <option value="hm">Hex Master</option>
+                  <option value="necro">Necromancer</option>
+                  <option value="exe">Executioner</option>
+                  <option value="pois">Poisoner</option>
+                  <option value="pmer">Potion Master</option>
                 </select>
               </td>
               <td>
@@ -315,7 +332,6 @@
                   <option value="unkown"></option>
                   <option value="exe">Executioner</option>
                   <option value="jest">Jester</option>
-                  <option value="witch">Witch</option>
                 </select>
               </td>
               <td>
@@ -332,6 +348,7 @@
                   <option value="arso">Arsonist</option>
                   <option value="sk">Serial Killer</option>
                   <option value="ww">Werewolf</option>
+                  <option value="jugg">Juggernaut</option>
                 </select>
               </td>
               <td>
