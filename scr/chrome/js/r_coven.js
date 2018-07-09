@@ -44,11 +44,56 @@ var names = [
   "name15"
 ];
 
+var roles_ids = [
+  "town-invest",
+  "town-invest2",
+  "town-protective",
+  "town-killing",
+  "town-support",
+  "town-random",
+  "town-random2",
+  "town-random3",
+  "coven-random",
+  "coven-random2",
+  "neutral-evil",
+  "neutral-killing"
+];
+
+var roles = [
+  "town-invest_cr",
+  "town-invest2_cr",
+  "town-protective_cr",
+  "town-killing_cr",
+  "town-support_cr",
+  "town-random_cr",
+  "town-random2_cr",
+  "town-random3_cr",
+  "coven-random_cr",
+  "coven-random2_cr",
+  "neutral-evil_cr",
+  "neutral-killing_cr"
+];
+
+var player_save_keys = [
+  "playername_cr",
+  "playerrole_cr"
+]
+
+var all = roles.concat(players, player_save_keys)
+
 // REPETETIVE
 function saveData(key, value, callback) {
   var temp = {};
   temp[key] = value;
-  chrome.storage.sync.set(temp, callback);
+  chrome.storage.local.set(temp, callback);
+}
+
+function setElementValue(id, value) {
+  document.getElementById("name1").value = value.data;
+}
+
+function getSavedDate(key, callback) {
+  chrome.storage.local.get(key, callback);
 }
 
 // REPETETIVE: REPLACE!
@@ -134,10 +179,12 @@ function setRoleInputActions() {
     removeUniqueRoles();
   });
   document.getElementById('coven-random').addEventListener('change', () => {
-    saveData("coven-random_cr", document.getElementById('maf-random').value);
+    saveData("coven-random_cr", document.getElementById('coven-random').value);
+    removeUniqueRoles();
   });
   document.getElementById('coven-random2').addEventListener('change', () => {
-    saveData("coven-random2_cr", document.getElementById('maf-random2').value);
+    saveData("coven-random2_cr", document.getElementById('coven-random2').value);
+    removeUniqueRoles();
   });
   document.getElementById('neutral-evil').addEventListener('change', () => {
     saveData("neutral-evil_cr", document.getElementById('neutral-evil').value);
@@ -152,11 +199,104 @@ function setRoleInputActions() {
   });
 }
 
+function colorSchemeSetup() {
+  getSavedDate(['colorscheme_cr'], function(object) {
+    if (object['colorscheme_cr'] == undefined)
+      saveData('colorscheme_cr', 'default', function() {
+        rankedDefaultColors();
+        document.getElementById("mk1").checked = true;
+      });
+    else if (object['colorscheme_cr'] == 'default') {
+      rankedDefaultColors();
+      document.getElementById("mk1").checked = true;
+    }
+    else if (object['colorscheme_cr'] == 'allies') {
+      if(document.getElementById('playerrole').value != 'unkown') {
+        rankedAlliedColors(document.getElementById('playerrole').value);
+        document.getElementById("mk2").checked = true;
+      }
+      else {
+        alert("Please select your own role first!");
+        document.getElementById("mk1").checked = true;
+      }
+    }
+  });
+}
+
+function playerNamesSetup() {
+  getSavedDate(players, function(object) {
+    for (var i = 0; i < 15; i++) {
+      if (object[players[i]] != undefined) {
+        document.getElementById(names[i]).value = object[players[i]];
+      }
+    }
+    getSavedDate(['playername_cr'], function(object) {
+      if (object['playername_cr'] != undefined) {
+        document.getElementById('playername').value = object['playername_cr'];
+      }
+    });
+  });
+}
+
+function playerRolesSetup() {
+  getSavedDate(roles, function(object) {
+    for (var i = 0; i < 12; i++) {
+      if (object[roles[i]] != undefined) {
+        document.getElementById(roles_ids[i]).value = object[roles[i]];
+      }
+    }
+    getSavedDate(['playerrole_cr'], function(object) {
+      if (object['playerrole_cr'] != undefined) {
+        document.getElementById('playerrole').value = object['playerrole_cr'];
+      }
+    });
+    /* execute unique thingy here */
+    removeUniqueRoles();
+    colorSchemeSetup();
+  });
+}
+
+/* This function removes unique roles as option when they are already picked in another slot */
+function removeUniqueRoles() {
+  UniqueRolesCheck();
+}
+
+function reset() {
+  for (var i = 0; i < 15; i++) {
+    document.getElementById(names[i]).value = "";
+  }
+  for (var i = 0; i < roles_ids.length; i++) {
+    document.getElementById(roles_ids[i]).value = "unkown";
+  }
+  document.getElementById('playername').value = "";
+  document.getElementById('playerrole').value = "unkown";
+  document.getElementById("mk1").checked = true;
+  rankedDefaultColors();
+  UniqueRolesCheck();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  playerNamesSetup();
+  playerRolesSetup();
+
+  setNameInputActions();
+  setRoleInputActions();
+
+  document.getElementById('mk1').addEventListener('change', () => {
+    saveData('colorscheme', 'default', function() {
+      colorSchemeSetup();
+    });
+  });
+  document.getElementById('mk2').addEventListener('change', () => {
+    saveData('colorscheme', 'allies', function() {
+      colorSchemeSetup();
+    });
+  });
+
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
-    chrome.storage.local.clear(function() {
-      reset();
+      chrome.storage.local.remove(all, function() {
+        reset();
     });
   });
 
