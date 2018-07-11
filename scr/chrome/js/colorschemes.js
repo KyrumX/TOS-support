@@ -104,3 +104,21 @@ function rankedAlliedColors(playerrole) {
     rankedDefaultColors();
   }
 }
+
+function covenRankedDefaultColors() {
+  document.getElementById("tdr-1").style.color = "#00FF00";
+  document.getElementById("tdr-2").style.color = "#00FF00";
+  document.getElementById("tdr-3").style.color = "#00FF00";
+  document.getElementById("tdr-4").style.color = "#00FF00";
+  document.getElementById("tdr-5").style.color = "#00FF00";
+  document.getElementById("tdr-6").style.color = "#00FF00";
+  document.getElementById("tdr-7").style.color = "#00FF00";
+  document.getElementById("tdr-8").style.color = "#00FF00";
+  document.getElementById("tdr-9").style.color = "#00FF00";
+  document.getElementById("tdr-10").style.color = "#C36CFE";
+  document.getElementById("tdr-11").style.color = "#C36CFE";
+  document.getElementById("tdr-12").style.color = "#C36CFE";
+  document.getElementById("tdr-13").style.color = "#C36CFE";
+  document.getElementById("tdr-14").style.color = "#ACACBD";
+  document.getElementById("tdr-15").style.color = "#ACACBD";
+}

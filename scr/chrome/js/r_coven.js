@@ -1,13 +1,3 @@
-function getCurrentPage(key, callback) {
-    chrome.storage.local.get(key, callback);
-}
-
-function setCurrentPage(key, value, callback) {
-    var temp = {};
-    temp[key] = value;
-    chrome.storage.local.set(temp, callback);
-}
-
 var players = [
   "p1_cr",
   "p2_cr",
@@ -76,25 +66,11 @@ var roles = [
 
 var player_save_keys = [
   "playername_cr",
-  "playerrole_cr"
+  "playerrole_cr",
+  "colorscheme_cr"
 ]
 
 var all = roles.concat(players, player_save_keys)
-
-// REPETETIVE
-function saveData(key, value, callback) {
-  var temp = {};
-  temp[key] = value;
-  chrome.storage.local.set(temp, callback);
-}
-
-function setElementValue(id, value) {
-  document.getElementById("name1").value = value.data;
-}
-
-function getSavedDate(key, callback) {
-  chrome.storage.local.get(key, callback);
-}
 
 // REPETETIVE: REPLACE!
 function setNameInputActions() {
@@ -203,21 +179,23 @@ function colorSchemeSetup() {
   getSavedDate(['colorscheme_cr'], function(object) {
     if (object['colorscheme_cr'] == undefined)
       saveData('colorscheme_cr', 'default', function() {
-        rankedDefaultColors();
+        covenRankedDefaultColors();
         document.getElementById("mk1").checked = true;
       });
     else if (object['colorscheme_cr'] == 'default') {
-      rankedDefaultColors();
+      covenRankedDefaultColors();
       document.getElementById("mk1").checked = true;
     }
     else if (object['colorscheme_cr'] == 'allies') {
       if(document.getElementById('playerrole').value != 'unkown') {
-        rankedAlliedColors(document.getElementById('playerrole').value);
+        covenRankedAlliedColors(document.getElementById('playerrole').value);
         document.getElementById("mk2").checked = true;
       }
       else {
-        alert("Please select your own role first!");
-        document.getElementById("mk1").checked = true;
+        saveData('colorscheme_cr', 'default', function() {
+          alert("Please select your own role first!");
+          document.getElementById("mk1").checked = true;
+        });
       }
     }
   });
@@ -258,7 +236,13 @@ function playerRolesSetup() {
 
 /* This function removes unique roles as option when they are already picked in another slot */
 function removeUniqueRoles() {
-  UniqueRolesCheck();
+  uniqueCheck(['town-killing', 'town-random', 'town-random2', 'town-random3'], "vet", "Veteran");
+  uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "mayor", "Mayor");
+  uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "retri", "Retributionist");
+  uniqueCheck(['coven-random', 'coven-random2'], "hm", "Hex Master");
+  uniqueCheck(['coven-random', 'coven-random2'], "necro", "Necromancer");
+  uniqueCheck(['coven-random', 'coven-random2'], "pois", "Poisoner");
+  uniqueCheck(['coven-random', 'coven-random2'], "pmer", "Potion Master");
 }
 
 function reset() {
@@ -271,8 +255,8 @@ function reset() {
   document.getElementById('playername').value = "";
   document.getElementById('playerrole').value = "unkown";
   document.getElementById("mk1").checked = true;
-  rankedDefaultColors();
-  UniqueRolesCheck();
+  covenRankedDefaultColors();
+  removeUniqueRoles();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

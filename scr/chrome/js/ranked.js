@@ -4,16 +4,6 @@
 
 */
 
-function getCurrentPage(key, callback) {
-    chrome.storage.local.get(key, callback);
-}
-
-function setCurrentPage(key, value, callback) {
-    var temp = {};
-    temp[key] = value;
-    chrome.storage.local.set(temp, callback);
-}
-
 var players = [
   "p1",
   "p2",
@@ -65,25 +55,19 @@ var roles = [
   "neutral-killing"
 ];
 
+var player_save_keys = [
+  "playername",
+  "playerrole",
+  "colorscheme"
+];
+
 var unique = [
   "mayor",
   "retri",
   "vet"
 ]
 
-function saveData(key, value, callback) {
-  var temp = {};
-  temp[key] = value;
-  chrome.storage.sync.set(temp, callback);
-}
-
-function setElementValue(id, value) {
-  document.getElementById("name1").value = value.data;
-}
-
-function getSavedDate(key, callback) {
-  chrome.storage.sync.get(key, callback);
-}
+var all = roles.concat(players, player_save_keys)
 
 function setNameInputActions() {
   document.getElementById('name1').addEventListener('change', () => {
@@ -202,8 +186,10 @@ function colorSchemeSetup() {
         document.getElementById("mk2").checked = true;
       }
       else {
-        alert("Please select your own role first!");
-        document.getElementById("mk1").checked = true;
+        saveData('colorscheme', 'default', function() {
+          alert("Please select your own role first!");
+          document.getElementById("mk1").checked = true;
+        });
       }
     }
   });
@@ -244,7 +230,9 @@ function playerRolesSetup() {
 
 /* This function removes unique roles as option when they are already picked in another slot */
 function removeUniqueRoles() {
-  UniqueRolesCheck();
+  uniqueCheck(['town-killing', 'town-random', 'town-random2', 'town-random3'], "vet", "Veteran");
+  uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "mayor", "Mayor");
+  uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "retri", "Retributionist");
 }
 
 function reset() {
@@ -258,7 +246,7 @@ function reset() {
   document.getElementById('playerrole').value = "unkown";
   document.getElementById("mk1").checked = true;
   rankedDefaultColors();
-  UniqueRolesCheck();
+  removeUniqueRoles();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -282,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
-    chrome.storage.sync.clear(function() {
+    chrome.storage.local.remove(all, function() {
       reset();
     });
   });
