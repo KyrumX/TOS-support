@@ -12,6 +12,10 @@ body {
   background-color: #af47d8;
 }
 
+#body_classic {
+  background-color: #3bf793;
+}
+
 input {
   color: white;
 }

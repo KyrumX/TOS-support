@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
   var parts = currentP.split("/")
   var last = parts.pop()
 
+  // Switch to Ranked on request
+  document.getElementById('classic_button').addEventListener('click', () => {
+    setCurrentPage("last_page", "classic.html", function() {
+      document.location.href = "../html/classic.html";
+    });
+  });
 
   // Switch to Ranked on request
   document.getElementById('rk_norm_button').addEventListener('click', () => {

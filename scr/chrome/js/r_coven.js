@@ -267,12 +267,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setRoleInputActions();
 
   document.getElementById('mk1').addEventListener('change', () => {
-    saveData('colorscheme', 'default', function() {
+    saveData('colorscheme_cr', 'default', function() {
       colorSchemeSetup();
     });
   });
   document.getElementById('mk2').addEventListener('change', () => {
-    saveData('colorscheme', 'allies', function() {
+    saveData('colorscheme_cr', 'allies', function() {
       colorSchemeSetup();
     });
   });

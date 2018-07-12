@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Town of Salem - Support Tool</title>
+    <link rel="stylesheet" type="text/css" href="../css/games.css">
+    <style type="text/css">
+      #container {
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+    <script src="../js/tools.js"></script>
+    <script src="../js/unique.js"></script>
+    <script src="../js/colorschemes.js"></script>
+    <script src="../js/classic.js"></script>
+  </head>
+
+  <body id="body_classic">
+    <div id="title">
+    <h1 class="tost">Town of Salem - Classic Mode</h1>
+    </div>
+    <div id="container">
+      <div id="userinputdiv">
+        <label for="playername">
+          Nickname:
+          <input type="text" id="playername" class="nameinput">
+        </label>
+        <label for="playerrole">
+          Your role:
+          <select id="playerrole" class="playerroleselect">
+            <option value="unkown"></option>
+            <option value="jailor">Jailor</option>
+            <option value="invest">Investigator</option>
+            <option value="lo">Lookout</option>
+            <option value="sherrif">Sheriff</option>
+            <option value="spy">Spy</option>
+            <option value="bg">Bodyguard</option>
+            <option value="doc">Doctor</option>
+            <option value="vet">Veteran</option>
+            <option value="vigil">Vigilante</option>
+            <option value="escort">Escort</option>
+            <option value="mayor">Mayor</option>
+            <option value="med">Medium</option>
+            <option value="retri">Retributionist</option>
+            <option value="tper">Transporter</option>
+            <option value="gf">Godfather</option>
+            <option value="maf">Mafioso</option>
+            <option value="framer">Framer</option>
+            <option value="sk">Serial Killer</option>
+            <option value="jest">Jester</option>
+            <option value="exe">Executioner</option>
+          </select>
+        </label>
+      </div>
+      <div id="tablediv">
+        <table id="ranked">
+          <tr>
+              <th>
+                Role type
+              </th>
+              <th>
+                Role
+              </th>
+              <th>
+                Player
+              </th>
+            </tr>
+            <tr>
+              <td id="tdr-1">
+                TI
+              </td>
+              <td>
+                Sheriff
+              </td>
+              <td>
+                <input type="text" id="name1" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-2">
+                TP
+              </td>
+              <td>
+                Doctor
+              </td>
+              <td>
+                <input type="text" id="name2" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-3">
+                TI
+              </td>
+              <td>
+                Investigator
+              </td>
+              <td>
+                <input type="text" id="name3" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-4">
+                TK
+              </td>
+              <td>
+                Jailor
+              </td>
+              <td>
+                <input type="text" id="name4" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-5">
+                TS
+              </td>
+              <td>
+                Medium
+              </td>
+              <td>
+                <input type="text" id="name5" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-6">
+                MK
+              </td>
+              <td>
+                Godfather
+              </td>
+              <td>
+                <input type="text" id="name6" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-7">
+                MD
+              </td>
+              <td>
+                Framer
+              </td>
+              <td>
+                <input type="text" id="name7" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-8">
+                NE
+              </td>
+              <td>
+                Executioner
+              </td>
+              <td>
+                <input type="text" id="name8" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-9">
+                TS
+              </td>
+              <td>
+                Escort
+              </td>
+              <td>
+                <input type="text" id="name9" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-10">
+                MK
+              </td>
+              <td>
+                Mafioso
+              </td>
+              <td>
+                <input type="text" id="name10" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-11">
+                TI
+              </td>
+              <td>
+                Lookout
+              </td>
+              <td>
+                <input type="text" id="name11" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-12">
+                NK
+              </td>
+              <td>
+                Serial Killer
+              </td>
+              <td>
+                <input type="text" id="name12" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-13">
+                TK
+              </td>
+              <td>
+                <select id="town-killing" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name13" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-14">
+                ne
+              </td>
+              <td>
+                Jester
+              </td>
+              <td>
+                <input type="text" id="name14" class="ranked-input">
+              </td>
+            </tr>
+            <tr>
+              <td id="tdr-15">
+                RT
+              </td>
+              <td>
+                <select id="town-random" class="roleselect">
+                  <option value="unkown"></option>
+                  <option value="invest">Investigator</option>
+                  <option value="lo">Lookout</option>
+                  <option value="sherrif">Sheriff</option>
+                  <option value="spy">Spy</option>
+                  <option value="bg">Bodyguard</option>
+                  <option value="doc">Doctor</option>
+                  <option value="vet">Veteran</option>
+                  <option value="vigil">Vigilante</option>
+                  <option value="escort">Escort</option>
+                  <option value="mayor">Mayor</option>
+                  <option value="med">Medium</option>
+                  <option value="retri">Retributionist</option>
+                  <option value="tper">Transporter</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" id="name15" class="ranked-input">
+              </td>
+            </tr>
+        </table>
+      </div>
+      <div id="colorschemediv">
+        <label for="mk1">
+          Default
+          <input type="radio" id="mk1" name="markupset" value="Default" checked/>
+        </label>
+        <label for="mk2">
+          Allies
+          <input type="radio" id="mk2" name="markupset" value="Allies" />
+        </label>
+         <span style="color: #00FF00">Green: </span>
+         Win with;
+         <span style="color: #FF0000">Red: </span>
+         You must kill;
+         <span style="color: #ACACBD">Gray: </span>Can porentially win with;
+      </div>
+      <div class='resetdiv'>
+        <table class="ranked_controls">
+          <tr>
+              <td>
+                <button type="button" id="return_mm">Main menu</button>
+              </td>
+              <td>
+                <button type="button" id="resetbutton">Reset</button>
+              </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

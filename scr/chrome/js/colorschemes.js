@@ -8,8 +8,10 @@ var town = ["jailor", "invest", "lo", "sherrif", "spy", "bg", "doc",
   "vet", "vigil", "escort", "mayor", "retri", "med", "tper"]
 var mafia = ["gf", "maf", "bmer", "consig", "consort", "dis", "forger",
  "jan", "framer"]
- var ne = ["exe", "jest", "witch"]
- var nk = ["arso", "sk", "ww"]
+var ne = ["exe", "jest", "witch"]
+var nk = ["arso", "sk", "ww"]
+var coven = ["cl", "medusa", "hm", "necro", "pois", "pmer"]
+var nk_cr = nk.concat(["jugg"])
 
  var tdrows = ["tdr-1", "tdr-2", "tdr-3", "tdr-4", "tdr-5", "tdr-6",
   "tdr-7", "tdr-8", "tdr-9", "tdr-10", "tdr-11", "tdr-12", "tdr-13",
@@ -121,4 +123,64 @@ function covenRankedDefaultColors() {
   document.getElementById("tdr-13").style.color = "#C36CFE";
   document.getElementById("tdr-14").style.color = "#ACACBD";
   document.getElementById("tdr-15").style.color = "#ACACBD";
+}
+
+function covenRankedAlliedColors(playerrole) {
+  if (town.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i < 9) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i < 13){
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+      else if (i == 13)
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else if (coven.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i < 9) {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+      else if (i < 13){
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i == 13) {
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      }
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else if (playerrole == 'jest' || playerrole == 'exe') {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i == 13) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else {
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      }
+    }
+  }
+  else if (nk_cr.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i == 13) {
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      }
+      else if (i == 14) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else {
+    covenRankedDefaultColors();
+  }
 }
