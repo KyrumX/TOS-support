@@ -55,72 +55,22 @@ var roles = [
   "neutral-killing"
 ];
 
+var player_save_keys = [
+  "playername",
+  "playerrole",
+  "colorscheme"
+];
+
 var unique = [
   "mayor",
   "retri",
   "vet"
 ]
 
-function saveData(key, value, callback) {
-  var temp = {};
-  temp[key] = value;
-  browser.storage.local.set(temp, callback);
-}
-
-function setElementValue(id, value) {
-  document.getElementById("name1").value = value.data;
-}
-
-function getSavedDate(key, callback) {
-  browser.storage.local.get(key, callback);
-}
+var all = roles.concat(players, player_save_keys)
 
 function setNameInputActions() {
-  document.getElementById('name1').addEventListener('change', () => {
-    saveData("p1", document.getElementById("name1").value);
-  });
-  document.getElementById('name2').addEventListener('change', () => {
-    saveData("p2", document.getElementById("name2").value);
-  });
-  document.getElementById('name3').addEventListener('change', () => {
-    saveData("p3", document.getElementById("name3").value);
-  });
-  document.getElementById('name4').addEventListener('change', () => {
-    saveData("p4", document.getElementById("name4").value);
-  });
-  document.getElementById('name5').addEventListener('change', () => {
-    saveData("p5", document.getElementById("name5").value);
-  });
-  document.getElementById('name6').addEventListener('change', () => {
-    saveData("p6", document.getElementById("name6").value);
-  });
-  document.getElementById('name7').addEventListener('change', () => {
-    saveData("p7", document.getElementById("name7").value);
-  });
-  document.getElementById('name8').addEventListener('change', () => {
-    saveData("p8", document.getElementById("name8").value);
-  });
-  document.getElementById('name9').addEventListener('change', () => {
-    saveData("p9", document.getElementById("name9").value);
-  });
-  document.getElementById('name10').addEventListener('change', () => {
-    saveData("p10", document.getElementById("name10").value);
-  });
-  document.getElementById('name11').addEventListener('change', () => {
-    saveData("p11", document.getElementById("name11").value);
-  });
-  document.getElementById('name12').addEventListener('change', () => {
-    saveData("p12", document.getElementById("name12").value);
-  });
-  document.getElementById('name13').addEventListener('change', () => {
-    saveData("p13", document.getElementById("name13").value);
-  });
-  document.getElementById('name14').addEventListener('change', () => {
-    saveData("p14", document.getElementById("name14").value);
-  });
-  document.getElementById('name15').addEventListener('change', () => {
-    saveData("p15", document.getElementById("name15").value);
-  });
+  nameSetUp(names, players)
   document.getElementById('playername').addEventListener('change', () => {
     saveData("playername", document.getElementById("playername").value);
   });
@@ -192,8 +142,10 @@ function colorSchemeSetup() {
         document.getElementById("mk2").checked = true;
       }
       else {
-        alert("Please select your own role first!");
-        document.getElementById("mk1").checked = true;
+        saveData('colorscheme', 'default', function() {
+          alert("Please select your own role first!");
+          document.getElementById("mk1").checked = true;
+        });
       }
     }
   });
@@ -234,7 +186,9 @@ function playerRolesSetup() {
 
 /* This function removes unique roles as option when they are already picked in another slot */
 function removeUniqueRoles() {
-  UniqueRolesCheck();
+  uniqueCheck(['town-killing', 'town-random', 'town-random2', 'town-random3'], "vet", "Veteran");
+  uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "mayor", "Mayor");
+  uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "retri", "Retributionist");
 }
 
 function reset() {
@@ -248,7 +202,7 @@ function reset() {
   document.getElementById('playerrole').value = "unkown";
   document.getElementById("mk1").checked = true;
   rankedDefaultColors();
-  UniqueRolesCheck();
+  removeUniqueRoles();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -272,8 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
-    browser.storage.local.clear(function() {
+    browser.storage.local.remove(all, function() {
       reset();
+    });
+  });
+
+  document.getElementById('return_mm').addEventListener('click', () => {
+    saveData("last_page", "main.html", function() {
+      document.location.href = "../html/main.html";
     });
   });
 });

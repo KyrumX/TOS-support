@@ -7,11 +7,11 @@
 function saveData(key, value, callback) {
   var temp = {};
   temp[key] = value;
-  chrome.storage.local.set(temp, callback);
+  browser.storage.local.set(temp, callback);
 }
 
 function getSavedDate(key, callback) {
-  chrome.storage.local.get(key, callback);
+  browser.storage.local.get(key, callback);
 }
 
 function nameSetUp(names, keys) {

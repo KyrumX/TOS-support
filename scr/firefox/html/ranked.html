@@ -1,23 +1,24 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Town of Salem - Support Tool</title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/games.css">
     <style type="text/css">
       #container {
         align-items: center;
         justify-content: space-between;
       }
     </style>
+    <script src="../js/tools.js"></script>
     <script src="../js/colorschemes.js"></script>
-    <script src="../js/roles.js"></script>
+    <script src="../js/unique.js"></script>
     <script src="../js/ranked.js"></script>
   </head>
 
-  <body>
+  <body id="body_ranked">
     <div id="title">
-    <h1 class="tost">Town of Salem - Support Tool</h1>
+    <h1 class="tost">Town of Salem - Ranked</h1>
     </div>
     <div id="container">
       <div id="userinputdiv">
@@ -357,7 +358,16 @@
          <span style="color: #ACACBD">Gray: </span>Can porentially win with;
       </div>
       <div class='resetdiv'>
-        <button type="button" id="resetbutton">Reset</button>
+        <table class="ranked_controls">
+          <tr>
+              <td>
+                <button type="button" id="return_mm" class="gamebutton">Main menu</button>
+              </td>
+              <td>
+                <button type="button" id="resetbutton" class="gamebutton">Reset</button>
+              </td>
+          </tr>
+        </table>
       </div>
     </div>
   </body>

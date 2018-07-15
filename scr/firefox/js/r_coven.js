@@ -5,21 +5,21 @@
 */
 
 var players = [
-  "p1",
-  "p2",
-  "p3",
-  "p4",
-  "p5",
-  "p6",
-  "p7",
-  "p8",
-  "p9",
-  "p10",
-  "p11",
-  "p12",
-  "p13",
-  "p14",
-  "p15"
+  "p1_cr",
+  "p2_cr",
+  "p3_cr",
+  "p4_cr",
+  "p5_cr",
+  "p6_cr",
+  "p7_cr",
+  "p8_cr",
+  "p9_cr",
+  "p10_cr",
+  "p11_cr",
+  "p12_cr",
+  "p13_cr",
+  "p14_cr",
+  "p15_cr"
 ];
 
 var names = [
@@ -40,7 +40,7 @@ var names = [
   "name15"
 ];
 
-var roles = [
+var roles_ids = [
   "town-invest",
   "town-invest2",
   "town-protective",
@@ -49,22 +49,31 @@ var roles = [
   "town-random",
   "town-random2",
   "town-random3",
-  "maf-random",
-  "maf-random2",
+  "coven-random",
+  "coven-random2",
   "neutral-evil",
   "neutral-killing"
 ];
 
-var player_save_keys = [
-  "playername",
-  "playerrole",
-  "colorscheme"
+var roles = [
+  "town-invest_cr",
+  "town-invest2_cr",
+  "town-protective_cr",
+  "town-killing_cr",
+  "town-support_cr",
+  "town-random_cr",
+  "town-random2_cr",
+  "town-random3_cr",
+  "coven-random_cr",
+  "coven-random2_cr",
+  "neutral-evil_cr",
+  "neutral-killing_cr"
 ];
 
-var unique = [
-  "mayor",
-  "retri",
-  "vet"
+var player_save_keys = [
+  "playername_cr",
+  "playerrole_cr",
+  "colorscheme_cr"
 ]
 
 var all = roles.concat(players, player_save_keys)
@@ -72,77 +81,79 @@ var all = roles.concat(players, player_save_keys)
 function setNameInputActions() {
   nameSetUp(names, players)
   document.getElementById('playername').addEventListener('change', () => {
-    saveData("playername", document.getElementById("playername").value);
+    saveData("playername_cr", document.getElementById("playername").value);
   });
 }
 
 function setRoleInputActions() {
   document.getElementById('town-invest').addEventListener('change', () => {
-    saveData("town-invest", document.getElementById('town-invest').value);
+    saveData("town-invest_cr", document.getElementById('town-invest').value);
   });
   document.getElementById('town-invest2').addEventListener('change', () => {
-    saveData("town-invest2", document.getElementById('town-invest2').value);
+    saveData("town-invest2_cr", document.getElementById('town-invest2').value);
   });
   document.getElementById('town-protective').addEventListener('change', () => {
-    saveData("town-protective", document.getElementById('town-protective').value);
+    saveData("town-protective_cr", document.getElementById('town-protective').value);
   });
   document.getElementById('town-killing').addEventListener('change', () => {
-    saveData("town-killing", document.getElementById('town-killing').value);
+    saveData("town-killing_cr", document.getElementById('town-killing').value);
     removeUniqueRoles();
   });
   document.getElementById('town-support').addEventListener('change', () => {
-    saveData("town-support", document.getElementById('town-support').value);
+    saveData("town-support_cr", document.getElementById('town-support').value);
     removeUniqueRoles();
   });
   document.getElementById('town-random').addEventListener('change', () => {
-    saveData("town-random", document.getElementById('town-random').value);
+    saveData("town-random_cr", document.getElementById('town-random').value);
     removeUniqueRoles();
   });
   document.getElementById('town-random2').addEventListener('change', () => {
-    saveData("town-random2", document.getElementById('town-random2').value);
+    saveData("town-random2_cr", document.getElementById('town-random2').value);
     removeUniqueRoles();
   });
   document.getElementById('town-random3').addEventListener('change', () => {
-    saveData("town-random3", document.getElementById('town-random3').value);
+    saveData("town-random3_cr", document.getElementById('town-random3').value);
     removeUniqueRoles();
   });
-  document.getElementById('maf-random').addEventListener('change', () => {
-    saveData("maf-random", document.getElementById('maf-random').value);
+  document.getElementById('coven-random').addEventListener('change', () => {
+    saveData("coven-random_cr", document.getElementById('coven-random').value);
+    removeUniqueRoles();
   });
-  document.getElementById('maf-random2').addEventListener('change', () => {
-    saveData("maf-random2", document.getElementById('maf-random2').value);
+  document.getElementById('coven-random2').addEventListener('change', () => {
+    saveData("coven-random2_cr", document.getElementById('coven-random2').value);
+    removeUniqueRoles();
   });
   document.getElementById('neutral-evil').addEventListener('change', () => {
-    saveData("neutral-evil", document.getElementById('neutral-evil').value);
+    saveData("neutral-evil_cr", document.getElementById('neutral-evil').value);
   });
   document.getElementById('neutral-killing').addEventListener('change', () => {
-    saveData("neutral-killing", document.getElementById('neutral-killing').value);
+    saveData("neutral-killing_cr", document.getElementById('neutral-killing').value);
   });
   document.getElementById('playerrole').addEventListener('change', () => {
-    saveData("playerrole", document.getElementById('playerrole').value, () => {
+    saveData("playerrole_cr", document.getElementById('playerrole').value, () => {
       colorSchemeSetup();
     });
   });
 }
 
 function colorSchemeSetup() {
-  getSavedDate(['colorscheme'], function(object) {
-    if (object['colorscheme'] == undefined)
-      saveData('colorscheme', 'default', function() {
-        rankedDefaultColors();
+  getSavedDate(['colorscheme_cr'], function(object) {
+    if (object['colorscheme_cr'] == undefined)
+      saveData('colorscheme_cr', 'default', function() {
+        covenRankedDefaultColors();
         document.getElementById("mk1").checked = true;
       });
-    else if (object['colorscheme'] == 'default') {
-      rankedDefaultColors();
+    else if (object['colorscheme_cr'] == 'default') {
+      covenRankedDefaultColors();
       document.getElementById("mk1").checked = true;
     }
-    else if (object['colorscheme'] == 'allies') {
+    else if (object['colorscheme_cr'] == 'allies') {
       if(document.getElementById('playerrole').value != 'unkown') {
-        rankedAlliedColors(document.getElementById('playerrole').value);
+        covenRankedAlliedColors(document.getElementById('playerrole').value);
         document.getElementById("mk2").checked = true;
       }
       else {
-        saveData('colorscheme', 'default', function() {
+        saveData('colorscheme_cr', 'default', function() {
           alert("Please select your own role first!");
           document.getElementById("mk1").checked = true;
         });
@@ -158,9 +169,9 @@ function playerNamesSetup() {
         document.getElementById(names[i]).value = object[players[i]];
       }
     }
-    getSavedDate(['playername'], function(object) {
-      if (object['playername'] != undefined) {
-        document.getElementById('playername').value = object['playername'];
+    getSavedDate(['playername_cr'], function(object) {
+      if (object['playername_cr'] != undefined) {
+        document.getElementById('playername').value = object['playername_cr'];
       }
     });
   });
@@ -170,12 +181,12 @@ function playerRolesSetup() {
   getSavedDate(roles, function(object) {
     for (var i = 0; i < 12; i++) {
       if (object[roles[i]] != undefined) {
-        document.getElementById(roles[i]).value = object[roles[i]];
+        document.getElementById(roles_ids[i]).value = object[roles[i]];
       }
     }
-    getSavedDate(['playerrole'], function(object) {
-      if (object['playerrole'] != undefined) {
-        document.getElementById('playerrole').value = object['playerrole'];
+    getSavedDate(['playerrole_cr'], function(object) {
+      if (object['playerrole_cr'] != undefined) {
+        document.getElementById('playerrole').value = object['playerrole_cr'];
       }
     });
     /* execute unique thingy here */
@@ -189,19 +200,23 @@ function removeUniqueRoles() {
   uniqueCheck(['town-killing', 'town-random', 'town-random2', 'town-random3'], "vet", "Veteran");
   uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "mayor", "Mayor");
   uniqueCheck(['town-support', 'town-random', 'town-random2', 'town-random3'], "retri", "Retributionist");
+  uniqueCheck(['coven-random', 'coven-random2'], "hm", "Hex Master");
+  uniqueCheck(['coven-random', 'coven-random2'], "necro", "Necromancer");
+  uniqueCheck(['coven-random', 'coven-random2'], "pois", "Poisoner");
+  uniqueCheck(['coven-random', 'coven-random2'], "pmer", "Potion Master");
 }
 
 function reset() {
   for (var i = 0; i < 15; i++) {
     document.getElementById(names[i]).value = "";
   }
-  for (var i = 0; i < roles.length; i++) {
-    document.getElementById(roles[i]).value = "unkown";
+  for (var i = 0; i < roles_ids.length; i++) {
+    document.getElementById(roles_ids[i]).value = "unkown";
   }
   document.getElementById('playername').value = "";
   document.getElementById('playerrole').value = "unkown";
   document.getElementById("mk1").checked = true;
-  rankedDefaultColors();
+  covenRankedDefaultColors();
   removeUniqueRoles();
 }
 
@@ -213,21 +228,20 @@ document.addEventListener('DOMContentLoaded', () => {
   setRoleInputActions();
 
   document.getElementById('mk1').addEventListener('change', () => {
-    saveData('colorscheme', 'default', function() {
+    saveData('colorscheme_cr', 'default', function() {
       colorSchemeSetup();
     });
   });
   document.getElementById('mk2').addEventListener('change', () => {
-    saveData('colorscheme', 'allies', function() {
+    saveData('colorscheme_cr', 'allies', function() {
       colorSchemeSetup();
     });
   });
 
-
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
-    chrome.storage.local.remove(all, function() {
-      reset();
+      browser.storage.local.remove(all, function() {
+        reset();
     });
   });
 

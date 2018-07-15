@@ -19,3 +19,7 @@ body {
   width: 100%;
   border-radius: 15px;
 }
+
+.gm_button:hover {
+  background-color: #cccccc;
+}

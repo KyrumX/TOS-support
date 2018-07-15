@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Reset the data stored when the Reset button is clicked */
   document.getElementById('resetbutton').addEventListener('click', () => {
-      chrome.storage.local.remove(all, function() {
+      browser.storage.local.remove(all, function() {
         reset();
     });
   });

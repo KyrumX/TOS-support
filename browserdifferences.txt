@@ -1,0 +1,2 @@
+FireFox uses browser. for storage
+Chrome used chrome.

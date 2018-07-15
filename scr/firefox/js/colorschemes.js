@@ -8,8 +8,10 @@ var town = ["jailor", "invest", "lo", "sherrif", "spy", "bg", "doc",
   "vet", "vigil", "escort", "mayor", "retri", "med", "tper"]
 var mafia = ["gf", "maf", "bmer", "consig", "consort", "dis", "forger",
  "jan", "framer"]
- var ne = ["exe", "jest", "witch"]
- var nk = ["arso", "sk", "ww"]
+var ne = ["exe", "jest", "witch"]
+var nk = ["arso", "sk", "ww"]
+var coven = ["cl", "medusa", "hm", "necro", "pois", "pmer"]
+var nk_cr = nk.concat(["jugg"])
 
  var tdrows = ["tdr-1", "tdr-2", "tdr-3", "tdr-4", "tdr-5", "tdr-6",
   "tdr-7", "tdr-8", "tdr-9", "tdr-10", "tdr-11", "tdr-12", "tdr-13",
@@ -102,5 +104,153 @@ function rankedAlliedColors(playerrole) {
   }
   else {
     rankedDefaultColors();
+  }
+}
+
+function covenRankedDefaultColors() {
+  document.getElementById("tdr-1").style.color = "#00FF00";
+  document.getElementById("tdr-2").style.color = "#00FF00";
+  document.getElementById("tdr-3").style.color = "#00FF00";
+  document.getElementById("tdr-4").style.color = "#00FF00";
+  document.getElementById("tdr-5").style.color = "#00FF00";
+  document.getElementById("tdr-6").style.color = "#00FF00";
+  document.getElementById("tdr-7").style.color = "#00FF00";
+  document.getElementById("tdr-8").style.color = "#00FF00";
+  document.getElementById("tdr-9").style.color = "#00FF00";
+  document.getElementById("tdr-10").style.color = "#C36CFE";
+  document.getElementById("tdr-11").style.color = "#C36CFE";
+  document.getElementById("tdr-12").style.color = "#C36CFE";
+  document.getElementById("tdr-13").style.color = "#C36CFE";
+  document.getElementById("tdr-14").style.color = "#ACACBD";
+  document.getElementById("tdr-15").style.color = "#ACACBD";
+}
+
+function covenRankedAlliedColors(playerrole) {
+  if (town.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i < 9) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i < 13){
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+      else if (i == 13)
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else if (coven.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i < 9) {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+      else if (i < 13){
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i == 13) {
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      }
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else if (playerrole == 'jest' || playerrole == 'exe') {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i == 13) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else {
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      }
+    }
+  }
+  else if (nk_cr.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i == 13) {
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      }
+      else if (i == 14) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else {
+    covenRankedDefaultColors();
+  }
+}
+
+function classicDefaultColors() {
+  document.getElementById("tdr-1").style.color = "#00FF00";
+  document.getElementById("tdr-2").style.color = "#00FF00";
+  document.getElementById("tdr-3").style.color = "#00FF00";
+  document.getElementById("tdr-4").style.color = "#00FF00";
+  document.getElementById("tdr-5").style.color = "#00FF00";
+  document.getElementById("tdr-6").style.color = "#FF0000";
+  document.getElementById("tdr-7").style.color = "#FF0000";
+  document.getElementById("tdr-8").style.color = "#ACACBD";
+  document.getElementById("tdr-9").style.color = "#00FF00";
+  document.getElementById("tdr-10").style.color = "#FF0000";
+  document.getElementById("tdr-11").style.color = "#00FF00";
+  document.getElementById("tdr-12").style.color = "#ACACBD";
+  document.getElementById("tdr-13").style.color = "#00FF00";
+  document.getElementById("tdr-14").style.color = "#ACACBD";
+  document.getElementById("tdr-15").style.color = "#00FF00";
+}
+
+function classicAlliedColors(playerrole) {
+  if (town.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i < 5) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i < 7){
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+      else if (i == 7 || i == 13)
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      else if (i == 8 || i == 10 || i == 12 || i == 14)
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else if (mafia.includes(playerrole)) {
+    for (var i = 0; i < tdrows.length; i++) {
+      if (i == 5 || i == 6 || i == 9) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i == 7 || i == 13)
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else if (playerrole == 'jest' || playerrole == 'exe') {
+    for (var i = 0; i < tdrows.length; i++) {
+      document.getElementById(tdrows[i]).style.color = "#ACACBD";
+    }
+  }
+  else if (playerrole == 'sk') {
+    for (var i = 0; i < tdrows.length; i++) {
+      if(i == 11) {
+        document.getElementById(tdrows[i]).style.color = "#00FF00";
+      }
+      else if (i == 7 || i == 13)
+        document.getElementById(tdrows[i]).style.color = "#ACACBD";
+      else {
+        document.getElementById(tdrows[i]).style.color = "#FF0000";
+      }
+    }
+  }
+  else {
+    classicDefaultColors();
   }
 }

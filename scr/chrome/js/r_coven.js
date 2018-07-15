@@ -1,3 +1,9 @@
+/*
+
+  Copyright (C) Aaron Beetstra 2018
+
+*/
+
 var players = [
   "p1_cr",
   "p2_cr",
@@ -72,53 +78,8 @@ var player_save_keys = [
 
 var all = roles.concat(players, player_save_keys)
 
-// REPETETIVE: REPLACE!
 function setNameInputActions() {
-  document.getElementById('name1').addEventListener('change', () => {
-    saveData("p1_cr", document.getElementById("name1").value);
-  });
-  document.getElementById('name2').addEventListener('change', () => {
-    saveData("p2_cr", document.getElementById("name2").value);
-  });
-  document.getElementById('name3').addEventListener('change', () => {
-    saveData("p3_cr", document.getElementById("name3").value);
-  });
-  document.getElementById('name4').addEventListener('change', () => {
-    saveData("p4_cr", document.getElementById("name4").value);
-  });
-  document.getElementById('name5').addEventListener('change', () => {
-    saveData("p5_cr", document.getElementById("name5").value);
-  });
-  document.getElementById('name6').addEventListener('change', () => {
-    saveData("p6_cr", document.getElementById("name6").value);
-  });
-  document.getElementById('name7').addEventListener('change', () => {
-    saveData("p7_cr", document.getElementById("name7").value);
-  });
-  document.getElementById('name8').addEventListener('change', () => {
-    saveData("p8_cr", document.getElementById("name8").value);
-  });
-  document.getElementById('name9').addEventListener('change', () => {
-    saveData("p9_cr", document.getElementById("name9").value);
-  });
-  document.getElementById('name10').addEventListener('change', () => {
-    saveData("p10_cr", document.getElementById("name10").value);
-  });
-  document.getElementById('name11').addEventListener('change', () => {
-    saveData("p11_cr", document.getElementById("name11").value);
-  });
-  document.getElementById('name12').addEventListener('change', () => {
-    saveData("p12_cr", document.getElementById("name12").value);
-  });
-  document.getElementById('name13').addEventListener('change', () => {
-    saveData("p13_cr", document.getElementById("name13").value);
-  });
-  document.getElementById('name14').addEventListener('change', () => {
-    saveData("p14_cr", document.getElementById("name14").value);
-  });
-  document.getElementById('name15').addEventListener('change', () => {
-    saveData("p15_cr", document.getElementById("name15").value);
-  });
+  nameSetUp(names, players)
   document.getElementById('playername').addEventListener('change', () => {
     saveData("playername_cr", document.getElementById("playername").value);
   });
@@ -285,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('return_mm').addEventListener('click', () => {
-    setCurrentPage("last_page", "main.html", function() {
+    saveData("last_page", "main.html", function() {
       document.location.href = "../html/main.html";
     });
   });
